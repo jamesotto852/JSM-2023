@@ -1,0 +1,430 @@
+---
+format: 
+  revealjs:
+    theme: [simple, presentation.css]
+    auto-animate-easing: ease-in-out
+    footer: "James Otto (Alcon Laboratories)"
+    self-contained: false
+    slide-number: true
+    df-print: paged
+    bibliography: bibliography.bib
+    csl: annals-of-botany.csl
+knitr:
+  opts_chunk: 
+    echo: true
+    fig-format: png
+---
+
+---
+nocite: |
+  @*
+---
+
+```{r setup_environment}
+#| include: false
+
+library("here")
+library("tidyverse") 
+library("patchwork")
+library("ggdensity")
+
+theme_set(theme_bw(13)) 
+
+theme_update(
+  panel.grid.minor = element_blank()
+)
+
+```
+
+---
+
+<h1> {tldr} </h1>
+
+<h2> Quick Documentation in the R Console  </h2>
+
+<hr>
+
+<h3> **James Otto** (Alcon Laboratories) </h3>
+
+<h3> David Kahle (Baylor University)  </h3>
+
+<h3> 8/8/2023 </h3>
+
+![](Images/tldr.svg){.absolute top=270 left=670 width="300"}
+
+::: footer
+
+:::
+
+# Modern Software Documentation
+
+## Docs for Developers (@bhatti_docs_2021)
+
+::: {.incremental}
+- User base
+- User needs
+- Example selection
+  - "Explanatory" and "executable"
+  - Explained, concise, clear, extensible, and trustworthy
+:::
+
+## Example Forward Documentation
+
+::: {.incremental}
+- Analysis of StackOverflow answers (@nasehi_what_2012)
+identified nine traits of "recognized" answers:
+  - Concise code samples
+  - Inline documentation
+  - Multiple solutions
+  - Links to extra resources
+:::
+
+# `tldr-pages`
+
+## `tldr-pages`
+
+![](Images/xkcd-tar-upscaled.png)
+
+::: {style="font-size: 70%; text-align: center;"}
+[xkcd.com/1168/](https://xkcd.com/1168/)
+:::
+
+## `tldr-pages` 
+
+::: {style="font-size: 60%"}
+`> man tar`
+:::
+
+::: {.fragment}
+```{verbatim, file = "chunk-code/man-tar.txt"}
+
+```
+:::
+
+## `tldr-pages` 
+
+::: {style="font-size: 60%;"}
+`> tldr tar`
+:::
+
+::: {.fragment}
+::: {.scroll-container style="overflow-y: scroll; height: 500px;"}
+![](Images/tldr-tar.png){fig-align="center" width="100%"}
+:::
+:::
+---
+
+
+## `tldr-pages`
+
+
+```{md, file = "chunk-code/tldr-tar.md", code_overflow = "wrap"}
+
+```
+
+## `tldr-pages`
+
+::: {style="margin-top: 1em;"}
+Crowd sourced documentation files: 
+:::
+
+::: {style="font-size: 80%;"}
+[github.com/tldr-pages/tldr/blob/main/pages/common/tar.md](https://github.com/tldr-pages/tldr/blob/main/pages/common/tar.md) 
+:::
+
+::: {.fragment style="margin-top: 1.5em;"}
+Guidelines for contributing and translating documentation,
+including instructions for authoring markdown
+:::
+
+::: {.fragment style="margin-top: -.5em;"}
+* Similar to best practices found in literature
+:::
+
+
+# The {tldr} R package
+
+
+## The {tldr} R package
+
+::: {.scroll-container style="overflow-y: scroll; height: 500px;"}
+![](Images/help-dnorm.png){fig-align="center" width="100%"}
+:::
+
+
+## The {tldr} R package
+
+::: {}
+![](Images/tldr-dnorm.png){fig-align="center" width="100%"}
+:::
+
+## The {tldr} R package
+
+::: {}
+![](Images/tldr-multiply.png){fig-align="center" width="100%"}
+:::
+
+## The {tldr} R package
+
+::: {}
+![](Images/tldr-multiplication-table.png){fig-align="center" width="100%"}
+:::
+
+# Writing {tldr} Documentation
+
+## Writing {tldr} Documentation {.smaller}
+
+::: {style="font-size: 1.3em;"}
+```{r, eval = FALSE}
+#| code-line-numbers: "|1|3-5|7-10|7-8|9-10|12-19|21-40" 
+#' Safe multiplication of numeric vectors
+#'
+#' Multiplies vectors `a` and `b`, component-wise.
+#' Does not recycle arguments, errors informatively if `length(a) != length(b)`.
+#' Also ensures both `a` and `b` are both `numeric`.
+#'
+#' @param a Multiplier, numeric vector
+#' @param b Multiplicand, numeric vector with same length as `a`
+#' @paramtldr a Multiplier
+#' @paramtldr b Multiplicand
+#'
+#' @exampletldr Multiply scalars:
+#' \code{multiply(1, 2)}
+#'
+#' @exampletldr Multiply vectors, component-wise:
+#' \code{multiply(1:10, rep(2, 10))}
+#'
+#' @exampletldr Values are not recycled:
+#' \code{multiply(1:10, 1) # errors}
+#'
+#' @examples
+#' # Behavior is the same as infix `%*%` when arguments are scalars:
+#' (res_1 <- multiply(1, 2))
+#' (res_2 <- 1 * 2)
+#' identical(res_1, res_2)
+#'
+#' # also when arguments are vectors of same length:
+#' (res_1_vec <- multiply(1:10, 11:20))
+#' (res_2_vec <- 1:10 * 11:20)
+#' identical(res_1_vec, res_2_vec)
+#'
+#' \dontrun{
+#'
+#' # However, `multiply()` does not recycle vectors:
+#' 1:10 * 1
+#' multiply(1:10, 1)
+#'
+#' 1:10 * 0:1
+#' multiply(1:10, 0:1)
+#'}
+#'
+#' @return A numeric vector with length equal to both `length(a)` and `length(b)`
+#' @export
+multiply <- function(a, b) {
+  if (!is.numeric(a)) stop("a must be numeric")
+  if (!is.numeric(b)) stop("b must be numeric")
+  if (length(a) != length(b)) stop("a and b must be vectors of the same length")
+  a * b
+}
+```
+:::
+
+::: {style="text-align: center;"}
+`tldrExample/R/multiply.R`
+:::
+
+
+## Writing {tldr} Documentation {.smaller}
+
+<!-- Why is this code chunk fuzzy?? -->
+::: {style="font-size: 1.3em;"}
+```{verbatim, eval = FALSE}
+% Generated by roxygen2: do not edit by hand
+\name{multiply}
+\alias{multiply}
+\title{Safe multiplication of numeric vectors}
+\arguments{
+\item{a}{Multiplier}
+\item{b}{Multiplicand
+}
+}
+\details{
+Multiply scalars:
+\code{multiply(1, 2)}
+Multiply vectors, component-wise:
+\code{multiply(1:10, rep(2, 10))}
+Values are not recycled:
+\code{multiply(1:10, 1) # errors}
+}
+
+
+
+
+
+
+
+
+
+
+\value{
+A numeric vector with length equal to both \code{length(a)} and \code{length(b)}
+}
+```
+:::
+
+::: {style="text-align: center;"}
+`/inst/tldr/multiply.Rd`
+:::
+
+## Writing {tldr} Documentation {.smaller}
+
+::: {style="font-size: 1.3em;"}
+```{verbatim, eval = FALSE}
+% Generated by roxygen2: do not edit by hand
+% Please edit documentation in R/multiply.R
+\name{multiply}
+\alias{multiply}
+\title{Safe multiplication of numeric vectors}
+\usage{
+multiply(a, b)
+}
+\arguments{
+\item{a}{Multiplier, numeric vector}
+
+\item{b}{Multiplicand, numeric vector with same length as \code{a}}
+}
+\value{
+A numeric vector with length equal to both \code{length(a)} and \code{length(b)}
+}
+\description{
+Multiplies vectors \code{a} and \code{b}, component-wise.
+Does not recycle arguments, errors informatively if  \code{length(a) != length(b)}.
+Also ensures both \code{a} and \code{b} are both \code{numeric}.
+}
+\examples{
+# Behavior is the same as infix `\%*\%` when arguments are scalars:
+(res_1 <- multiply(1, 2))
+(res_2 <- 1 * 2)
+identical(res_1, res_2)
+
+# also when arguments are vectors of same length:
+(res_1_vec <- multiply(1:10, 11:20))
+(res_2_vec <- 1:10 * 11:20)
+identical(res_1_vec, res_2_vec)
+
+\dontrun{
+
+# However, `multiply()` does not recycle vectors:
+1:10 * 1
+multiply(1:10, 1)
+
+1:10 * 0:1
+multiply(1:10, 0:1)
+}
+}
+```
+:::
+
+::: {style="text-align: center;"}
+`tldrExample/man/multiply.Rd`
+:::
+
+## Writing {tldr} Documentation
+
+```{r, eval=FALSE}
+#| code-line-numbers: "|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16" 
+`tldrExample/R/multiply.R` |>
+  tldr_roclet() |>
+  roclet_process.roclet_tldr() |>
+  block_to_rd_tldr() |>
+  roxy_tag_rd_tldr() |>
+  # methods: .roxy_tag_rd_exampletldr(), .roxy_tag_rd_paramtldr()
+  roxy_tag_parse() |>
+  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
+  format() |>
+  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
+  roclet_output.roclet_tldr() ->
+  `tldrExample/inst/tldr/multiply.Rd` 
+
+`tldrExample/inst/tldr/multiply.Rd` |>
+  install.packages() ->
+  `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
+```
+
+## Writing {tldr} Documentation
+```{r, eval=FALSE}
+#| code-line-numbers: "|1|2|3-4|4-5|4-7" 
+tldr(tldrExample::multiply) |>
+  tldr_help() |>
+  tldr_path() |>
+  # `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
+  tools::parse_Rd() |>
+  Rd2tldr()
+  # helpers: Rd2tldr_details(), Rd2tldr_arguments()
+```
+
+## Writing {tldr} Documentation
+
+:::: {.columns}
+
+::: {.column width="48.25%"}
+```{r, eval = FALSE}
+?(anova)
+?(anova())
+?(anova(lm(speed ~ dist, cars)))
+?(anova(stop()))
+?("anova")
+?(stats::anova)
+```
+:::
+
+::: {.column width="51.75%"}
+```{r, eval = FALSE}
+tldr(anova)
+tldr(anova())
+tldr(anova(lm(speed ~ dist, cars)))
+tldr(anova(stop()))
+tldr("anova")
+tldr(stats::anova)
+```
+:::
+
+::::
+
+
+# {tldrDocs}
+
+## {tldrDocs}
+
+Include 1-3 screenshots (e.g. `rep`, `lapply`, `anova`)
+
+## {tldrDocs}
+
+:::{.fragment style="margin-top: 1em;"}
+Intended to be crowd-sourced, similar to `tldr-pages`.
+:::
+
+::: {.fragment style="margin-top: -.5em;"}
+* Collaboration facilitated by GitHub version control tools
+:::
+
+:::{.fragment style="margin-top: 1.25em;"}
+We are currently developing guidelines and more robust documentation
+for authoring {tldr} documentation for base functions.
+:::
+
+
+
+## References 
+
+::: {#refs}
+:::
+
+
+# Thank you! 
+
+<hr>
+
+* [jamesotto852.github.io/JSM-2023](https://jamesotto852.github.io/JSM-2023)
+* [github.com/jamesotto/tldr](https://github.com/jamesotto/tldr)
+* [github.com/jamesotto/tldrDocs](https://github.com/jamesotto/tldrDocs)

@@ -1,0 +1,23 @@
+body ::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+}
+
+p > code {
+  color: black !important;
+  font-family: monospace !important;
+}
+
+div .csl-entry {
+  margin-bottom: .3em;
+  font-size: .85em;
+}
+
+.callout {
+  background-color: white;
+}
+
+/*-- scss:defaults --*/
