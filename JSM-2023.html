@@ -1812,16 +1812,6 @@ David Kahle (Baylor University)
 </figure>
 </div>
 </div>
-</section>
-<section id="the-tldr-r-package-4" class="slide level2">
-<h2>The {tldr} R package</h2>
-<div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="Images/tldr-multiplication-table.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
 </section></section>
 <section>
 <section id="writing-tldr-documentation" class="title-slide slide level1 center">
@@ -1975,37 +1965,15 @@ David Kahle (Baylor University)
 <div style="text-align: center;">
 <p><code>tldrExample/man/multiply.Rd</code></p>
 </div>
-</section>
-<section id="writing-tldr-documentation-4" class="slide level2">
-<h2>Writing {tldr} Documentation</h2>
-<div class="columns">
-<div class="column" style="width:48.25%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>?(anova)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>?(<span class="fu">anova</span>())</span>
-<span id="cb6-3"><a href="#cb6-3"></a>?(<span class="fu">anova</span>(<span class="fu">lm</span>(speed <span class="sc">~</span> dist, cars)))</span>
-<span id="cb6-4"><a href="#cb6-4"></a>?(<span class="fu">anova</span>(<span class="fu">stop</span>()))</span>
-<span id="cb6-5"><a href="#cb6-5"></a>?(<span class="st">"anova"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6"></a>?(stats<span class="sc">::</span>anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:51.75%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">tldr</span>(anova)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">tldr</span>(<span class="fu">anova</span>())</span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="fu">tldr</span>(<span class="fu">anova</span>(<span class="fu">lm</span>(speed <span class="sc">~</span> dist, cars)))</span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">tldr</span>(<span class="fu">anova</span>(<span class="fu">stop</span>()))</span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="fu">tldr</span>(<span class="st">"anova"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="fu">tldr</span>(stats<span class="sc">::</span>anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
 </section></section>
 <section>
-<section id="tldrdocs" class="title-slide slide level1 center">
-<h1>{tldrDocs}</h1>
-
+<section id="section" class="title-slide slide level1 center" data-menu-title="{tldrDocs}">
+<h1></h1>
+<div style="text-align: center;">
+<p><img data-src="Images/tldrDocs.svg" data-fig-align="center" width="450"> <!-- ![](Images/tldrDocs.svg){.absolute top=150 left=312 width="400"} --></p>
+</div>
 </section>
-<section id="tldrdocs-1" class="slide level2">
+<section id="tldrdocs" class="slide level2">
 <h2>{tldrDocs}</h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -2015,7 +1983,7 @@ David Kahle (Baylor University)
 </div>
 </div>
 </section>
-<section id="tldrdocs-2" class="slide level2">
+<section id="tldrdocs-1" class="slide level2">
 <h2>{tldrDocs}</h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -2025,7 +1993,7 @@ David Kahle (Baylor University)
 </div>
 </div>
 </section>
-<section id="tldrdocs-3" class="slide level2">
+<section id="tldrdocs-2" class="slide level2">
 <h2>{tldrDocs}</h2>
 <div>
 <div class="quarto-figure quarto-figure-center">
@@ -2034,9 +2002,8 @@ David Kahle (Baylor University)
 </figure>
 </div>
 </div>
-<!-- Add anova() + summary to lm() docs, include screen shot -->
 </section>
-<section id="tldrdocs-4" class="slide level2">
+<section id="tldrdocs-3" class="slide level2">
 <h2>{tldrDocs}</h2>
 <div style="margin-top: 1em;">
 <p>Intended to be crowd-sourced, similar to <code>tldr-pages</code>.</p>
@@ -2100,6 +2067,7 @@ David Kahle (Baylor University)
 <li><a href="https://jamesotto852.github.io/JSM-2023">jamesotto852.github.io/JSM-2023</a></li>
 <li><a href="https://github.com/jamesotto852/tldr">github.com/jamesotto852/tldr</a></li>
 <li><a href="https://github.com/jamesotto852/tldrDocs">github.com/jamesotto852/tldrDocs</a></li>
+<li><a href="https://github.com/jamesotto852/tldrExample">github.com/jamesotto852/tldrExample</a></li>
 </ul>
 </section>
 
@@ -2109,36 +2077,70 @@ David Kahle (Baylor University)
 
 </section>
 <section id="roxygen2-extension-details" class="slide level2" data-visibility="uncounted">
-<h2>{Roxygen2} extension details</h2>
+<h2>{roxygen2} extension details</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="st">`</span><span class="at">tldrExample/R/multiply.R</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">tldr_roclet</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">roclet_process.roclet_tldr</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">block_to_rd_tldr</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">roxy_tag_rd_tldr</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="co"># methods: .roxy_tag_rd_exampletldr(), .roxy_tag_rd_paramtldr()</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">roxy_tag_parse</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8"></a>  <span class="co"># methods: .rd_section_exampletldr(), .rd_section_paramtldr()</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>  <span class="fu">format</span>() <span class="sc">|&gt;</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>  <span class="co"># methods: .rd_section_exampletldr(), .rd_section_paramtldr()</span></span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">roclet_output.roclet_tldr</span>() <span class="ot">-&gt;</span></span>
-<span id="cb8-12"><a href="#cb8-12"></a>  <span class="st">`</span><span class="at">tldrExample/inst/tldr/multiply.Rd</span><span class="st">`</span> </span>
-<span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="st">`</span><span class="at">tldrExample/inst/tldr/multiply.Rd</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
-<span id="cb8-15"><a href="#cb8-15"></a>  <span class="fu">install.packages</span>() <span class="ot">-&gt;</span></span>
-<span id="cb8-16"><a href="#cb8-16"></a>  <span class="st">`</span><span class="at">ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="st">`</span><span class="at">tldrExample/R/multiply.R</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">tldr_roclet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">roclet_process.roclet_tldr</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">block_to_rd_tldr</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">roxy_tag_rd_tldr</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="co"># methods: .roxy_tag_rd_exampletldr(), .roxy_tag_rd_paramtldr()</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">roxy_tag_parse</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="co"># methods: .rd_section_exampletldr(), .rd_section_paramtldr()</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">format</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="co"># methods: .rd_section_exampletldr(), .rd_section_paramtldr()</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>  <span class="fu">roclet_output.roclet_tldr</span>() <span class="ot">-&gt;</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>  <span class="st">`</span><span class="at">tldrExample/inst/tldr/multiply.Rd</span><span class="st">`</span> </span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="st">`</span><span class="at">tldrExample/inst/tldr/multiply.Rd</span><span class="st">`</span> <span class="sc">|&gt;</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="fu">install.packages</span>() <span class="ot">-&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>  <span class="st">`</span><span class="at">ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd</span><span class="st">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="tldr-implementation-details" class="slide level2" data-visibility="uncounted">
 <h2><code>tldr()</code> implementation details</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="|1|2|3-4|4-5|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tldr</span>(tldrExample<span class="sc">::</span>multiply) <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">tldr_help</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">tldr_path</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="co"># `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a>  tools<span class="sc">::</span><span class="fu">parse_Rd</span>() <span class="sc">|&gt;</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a>  <span class="fu">Rd2tldr</span>()</span>
-<span id="cb9-7"><a href="#cb9-7"></a>  <span class="co"># helpers: Rd2tldr_details(), Rd2tldr_arguments()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|1|2|3-4|4-5|4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">tldr</span>(tldrExample<span class="sc">::</span>multiply) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">tldr_help</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">tldr_path</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="co"># `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  tools<span class="sc">::</span><span class="fu">parse_Rd</span>() <span class="sc">|&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="fu">Rd2tldr</span>()</span>
+<span id="cb7-7"><a href="#cb7-7"></a>  <span class="co"># helpers: Rd2tldr_details(), Rd2tldr_arguments()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="same-evaluation-as" class="slide level2" data-visibility="uncounted">
+<h2>Same evaluation as <code>`?`()</code></h2>
+<div class="columns">
+<div class="column" style="width:48.25%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>?(anova)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>?(<span class="fu">anova</span>())</span>
+<span id="cb8-3"><a href="#cb8-3"></a>?(<span class="fu">anova</span>(<span class="fu">lm</span>(speed <span class="sc">~</span> dist, cars)))</span>
+<span id="cb8-4"><a href="#cb8-4"></a>?(<span class="fu">anova</span>(<span class="fu">stop</span>()))</span>
+<span id="cb8-5"><a href="#cb8-5"></a>?(<span class="st">"anova"</span>)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>?(stats<span class="sc">::</span>anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:51.75%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">tldr</span>(anova)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">tldr</span>(<span class="fu">anova</span>())</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">tldr</span>(<span class="fu">anova</span>(<span class="fu">lm</span>(speed <span class="sc">~</span> dist, cars)))</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">tldr</span>(<span class="fu">anova</span>(<span class="fu">stop</span>()))</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">tldr</span>(<span class="st">"anova"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">tldr</span>(stats<span class="sc">::</span>anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="documenting-data" class="slide level2" data-visibility="uncounted">
+<h2>Documenting data</h2>
+<div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="Images/tldr-multiplication-table.png" style="width:100.0%"></p>
+</figure>
+</div>
 </div>
 <div class="footer footer-default">
 <p>James Otto (Alcon Laboratories)</p>
