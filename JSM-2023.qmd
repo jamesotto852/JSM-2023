@@ -133,7 +133,7 @@ Crowd sourced documentation files:
 :::
 
 ::: {.fragment style="margin-top: 1.5em;"}
-Guidelines for contributing and translating documentation,
+[Guidelines](https://github.com/tldr-pages/tldr/blob/main/CONTRIBUTING.md) for contributing and translating documentation,
 including instructions for authoring markdown
 :::
 
@@ -331,40 +331,6 @@ multiply(1:10, 0:1)
 
 ## Writing {tldr} Documentation
 
-```{r, eval=FALSE}
-#| code-line-numbers: "|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16" 
-`tldrExample/R/multiply.R` |>
-  tldr_roclet() |>
-  roclet_process.roclet_tldr() |>
-  block_to_rd_tldr() |>
-  roxy_tag_rd_tldr() |>
-  # methods: .roxy_tag_rd_exampletldr(), .roxy_tag_rd_paramtldr()
-  roxy_tag_parse() |>
-  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
-  format() |>
-  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
-  roclet_output.roclet_tldr() ->
-  `tldrExample/inst/tldr/multiply.Rd` 
-
-`tldrExample/inst/tldr/multiply.Rd` |>
-  install.packages() ->
-  `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
-```
-
-## Writing {tldr} Documentation
-```{r, eval=FALSE}
-#| code-line-numbers: "|1|2|3-4|4-5|4-7" 
-tldr(tldrExample::multiply) |>
-  tldr_help() |>
-  tldr_path() |>
-  # `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
-  tools::parse_Rd() |>
-  Rd2tldr()
-  # helpers: Rd2tldr_details(), Rd2tldr_arguments()
-```
-
-## Writing {tldr} Documentation
-
 :::: {.columns}
 
 ::: {.column width="48.25%"}
@@ -396,11 +362,27 @@ tldr(stats::anova)
 
 ## {tldrDocs}
 
-Include 1-3 screenshots (e.g. `rep`, `lapply`, `anova`)
+::: {}
+![](Images/tldr-lapply.png){fig-align="center" width="100%"}
+:::
 
 ## {tldrDocs}
 
-:::{.fragment style="margin-top: 1em;"}
+::: {}
+![](Images/tldr-lm.png){fig-align="center" width="100%"}
+:::
+
+## {tldrDocs}
+
+::: {}
+![](Images/tldr-dollar.png){fig-align="center" width="100%"}
+:::
+
+<!-- Add anova() + summary to lm() docs, include screen shot -->
+
+## {tldrDocs}
+
+:::{style="margin-top: 1em;"}
 Intended to be crowd-sourced, similar to `tldr-pages`.
 :::
 
@@ -412,6 +394,9 @@ Intended to be crowd-sourced, similar to `tldr-pages`.
 We are currently developing guidelines and more robust documentation
 for authoring {tldr} documentation for base functions.
 :::
+
+<!-- Note: {tldrDocs} is very much a work in progress, -->
+<!-- right now it is essentially a proof-of-concept -->
 
 
 
@@ -426,5 +411,41 @@ for authoring {tldr} documentation for base functions.
 <hr>
 
 * [jamesotto852.github.io/JSM-2023](https://jamesotto852.github.io/JSM-2023)
-* [github.com/jamesotto/tldr](https://github.com/jamesotto/tldr)
-* [github.com/jamesotto/tldrDocs](https://github.com/jamesotto/tldrDocs)
+* [github.com/jamesotto852/tldr](https://github.com/jamesotto852/tldr)
+* [github.com/jamesotto852/tldrDocs](https://github.com/jamesotto852/tldrDocs)
+  
+# Supplemental Materials {visibility="uncounted"}
+
+## {Roxygen2} extension details {visibility="uncounted"}
+
+```{r, eval=FALSE}
+#| code-line-numbers: "|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16" 
+`tldrExample/R/multiply.R` |>
+  tldr_roclet() |>
+  roclet_process.roclet_tldr() |>
+  block_to_rd_tldr() |>
+  roxy_tag_rd_tldr() |>
+  # methods: .roxy_tag_rd_exampletldr(), .roxy_tag_rd_paramtldr()
+  roxy_tag_parse() |>
+  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
+  format() |>
+  # methods: .rd_section_exampletldr(), .rd_section_paramtldr()
+  roclet_output.roclet_tldr() ->
+  `tldrExample/inst/tldr/multiply.Rd` 
+
+`tldrExample/inst/tldr/multiply.Rd` |>
+  install.packages() ->
+  `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
+```
+
+## `tldr()` implementation details {visibility="uncounted"}
+```{r, eval=FALSE}
+#| code-line-numbers: "|1|2|3-4|4-5|4-7" 
+tldr(tldrExample::multiply) |>
+  tldr_help() |>
+  tldr_path() |>
+  # `ubuntu/R/x86_64-pc-linux-gnu-library/4.3/tldrExample/tldr/multiply.Rd`
+  tools::parse_Rd() |>
+  Rd2tldr()
+  # helpers: Rd2tldr_details(), Rd2tldr_arguments()
+```
