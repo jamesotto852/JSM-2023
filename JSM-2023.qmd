@@ -164,11 +164,7 @@ including instructions for authoring markdown
 ![](Images/tldr-multiply.png){fig-align="center" width="100%"}
 :::
 
-## The {tldr} R package
 
-::: {}
-![](Images/tldr-multiplication-table.png){fig-align="center" width="100%"}
-:::
 
 # Writing {tldr} Documentation
 
@@ -329,36 +325,13 @@ multiply(1:10, 0:1)
 `tldrExample/man/multiply.Rd`
 :::
 
-## Writing {tldr} Documentation
 
-:::: {.columns}
+# {data-menu-title="{tldrDocs}"}
 
-::: {.column width="48.25%"}
-```{r, eval = FALSE}
-?(anova)
-?(anova())
-?(anova(lm(speed ~ dist, cars)))
-?(anova(stop()))
-?("anova")
-?(stats::anova)
-```
+::: {style="text-align: center;"}
+![](Images/tldrDocs.svg){fig-align="center" width="450"}
+<!-- ![](Images/tldrDocs.svg){.absolute top=150 left=312 width="400"} -->
 :::
-
-::: {.column width="51.75%"}
-```{r, eval = FALSE}
-tldr(anova)
-tldr(anova())
-tldr(anova(lm(speed ~ dist, cars)))
-tldr(anova(stop()))
-tldr("anova")
-tldr(stats::anova)
-```
-:::
-
-::::
-
-
-# {tldrDocs}
 
 ## {tldrDocs}
 
@@ -378,7 +351,6 @@ tldr(stats::anova)
 ![](Images/tldr-dollar.png){fig-align="center" width="100%"}
 :::
 
-<!-- Add anova() + summary to lm() docs, include screen shot -->
 
 ## {tldrDocs}
 
@@ -413,10 +385,11 @@ for authoring {tldr} documentation for base functions.
 * [jamesotto852.github.io/JSM-2023](https://jamesotto852.github.io/JSM-2023)
 * [github.com/jamesotto852/tldr](https://github.com/jamesotto852/tldr)
 * [github.com/jamesotto852/tldrDocs](https://github.com/jamesotto852/tldrDocs)
+* [github.com/jamesotto852/tldrExample](https://github.com/jamesotto852/tldrExample)
   
 # Supplemental Materials {visibility="uncounted"}
 
-## {Roxygen2} extension details {visibility="uncounted"}
+## {roxygen2} extension details {visibility="uncounted"}
 
 ```{r, eval=FALSE}
 #| code-line-numbers: "|1|2|2-3|4|4-6|4-8|4-10|11-12|14-16" 
@@ -449,3 +422,38 @@ tldr(tldrExample::multiply) |>
   Rd2tldr()
   # helpers: Rd2tldr_details(), Rd2tldr_arguments()
 ```
+
+
+## Same evaluation as `` `?`() `` {visibility="uncounted"}
+
+:::: {.columns}
+
+::: {.column width="48.25%"}
+```{r, eval = FALSE}
+?(anova)
+?(anova())
+?(anova(lm(speed ~ dist, cars)))
+?(anova(stop()))
+?("anova")
+?(stats::anova)
+```
+:::
+
+::: {.column width="51.75%"}
+```{r, eval = FALSE}
+tldr(anova)
+tldr(anova())
+tldr(anova(lm(speed ~ dist, cars)))
+tldr(anova(stop()))
+tldr("anova")
+tldr(stats::anova)
+```
+:::
+
+::::
+
+## Documenting data {visibility="uncounted"}
+
+::: {}
+![](Images/tldr-multiplication-table.png){fig-align="center" width="100%"}
+:::
